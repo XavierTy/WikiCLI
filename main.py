@@ -1,35 +1,15 @@
-import click
+import click 
+from click_aliases import ClickAliasedGroup
 
-@click.command()
-@click.option(
-    "-s",
-    "--search",
-    help="This flag searches wikipedia with the provided arg"
- )
-@click.option(
-    "-d",
-    "--download",
-    help="wiki -d [wikipedia_url]"
- )
-@click.option(
-    "-df",
-    "--downlfolder",
-    help="select/create a downloads path to receive pages"
- )
-@click.option(
-    "-v", 
-    "--view",
-    help="View pages stored in downloads path"
-)
-# def cli(): needs to be passed a string as an arg, 
-# for each option.
-def cli(search,
-        download, 
-        downlfolder, 
-        view):
-    # This displays the menu
-    # and command flags for the program.
-    click.echo("WikiCLI: The command line interface for Wikipedia")
+@click.group(cls=ClickAliasedGroup)
+def cli():
+    """WikiCLI: The CLI for wikipedia"""
+
+@cli.group('search', cls=ClickAliasedGroup)
+def search():
+    """Manages the api call to wikipedia."""
+    click.echo("This is working: %s")
+
 
 if __name__ == "__main__":
-    cli()
+    cli("--help".split())

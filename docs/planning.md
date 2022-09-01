@@ -9,4 +9,18 @@ This program should search Wikipedia in a CLI interface. To then possibly downlo
 - should include help text with 
   Clicks default --help flag.
 
-  
+@click.option(
+    "-d",
+    "--download",
+    help="wiki -d [wikipedia_url]"
+ )
+@click.option(
+    "-df",
+    "--downlfolder",
+    help="select/create a downloads path to receive pages"
+ )
+@click.option(
+    "-v", 
+    "--view",
+    help="View pages stored in downloads path"
+)
